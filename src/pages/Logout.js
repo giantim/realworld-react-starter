@@ -1,13 +1,22 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React, {useContext} from "react";
+import {Redirect} from "react-router-dom";
+import {UserContext} from "../App";
 
 const Logout = () => {
+    const {setUserDetail} = useContext(UserContext);
 
-  // TODO: 로그아웃 기능 구현
+    const logout = () => {
+        localStorage.removeItem("jwt");
+        setUserDetail(null);
+    }
 
-  return (
-    <Redirect to="/"></Redirect>
-  );
+    logout();
+
+    return (
+        <Redirect
+            to="/"
+        ></Redirect>
+    );
 };
 
 export default Logout;
